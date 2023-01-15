@@ -1,0 +1,7 @@
+.Layer {
+    position: relative;
+  }
+  
+  .Layer > * {
+    position: absolute;
+  }

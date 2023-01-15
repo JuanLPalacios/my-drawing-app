@@ -50,8 +50,9 @@ Feel free to check the [issues page](../../issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-or If you appreciate my work, consider buying me a [coffee](https://www.buymeacoffee.com/juanluispap) as a gesture of support.
+or If you appreciate my work, consider buying me a coffee as a gesture of support.
 
+[![buy me a coffee](./readme_assets/bmc-button.png)](https://www.buymeacoffee.com/juanluispap)
 
 ## 📝 License
 

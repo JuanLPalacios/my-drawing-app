@@ -2,6 +2,9 @@
 
 Demo app that serves as supplementary material for a tutorial on using the 2D context in React with a canvas.
 
+Tutorioal Series:
+- [Setting up the project](https://medium.com/@juan.luis.palacios.p/creating-a-react-multilayer-drawing-app-part-1-setting-up-the-project-612ecbbadb04)
+
 ### Features
 
 - tools

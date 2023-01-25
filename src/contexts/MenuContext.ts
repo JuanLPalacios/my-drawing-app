@@ -1,8 +1,6 @@
 import { createContext } from 'react';
 
-export type Tool = (props:{ 
-  children?: JSX.Element|JSX.Element[];
-}) => JSX.Element;
+export type Tool = (props:ToolProps) => JSX.Element;
 
 
 export type ToolOptions = {

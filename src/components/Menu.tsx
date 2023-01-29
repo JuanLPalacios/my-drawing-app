@@ -4,6 +4,7 @@ import { MenuContext } from "../contexts/MenuContext";
 export const Menu = () => {
     const [menuOptions, setMenuOptions] = useContext(MenuContext);
     const { tools, selectedTool } = menuOptions;
+    console.log(selectedTool);
     return (
         <div className="Menu">
             {tools.map(({ name }, i) => 

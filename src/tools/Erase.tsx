@@ -1,9 +1,20 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { createCanvasPair } from "../generator/createCanvasPair";
 
 export const Erase = ({layerPair, bufferPair, children}:ToolProps) => {
     const [isMouseDown, setMouseDown] = useState(false);
     const {width, height} = layerPair.canvas;
+    const [dataTemp, setDataTemp] = useState<ImageData | undefined>();
+    
+    useEffect(() => {
+        layerPair.ctx.globalCompositeOperation = 'destination-out';
+        return()=>{
+            layerPair.ctx.globalCompositeOperation = 'source-over';
+        }
+    }, [bufferPair]);
+
     const onMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      setDataTemp(layerPair.ctx.getImageData(0,0,width,height));
       const { ctx } = bufferPair;
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
@@ -17,12 +28,12 @@ export const Erase = ({layerPair, bufferPair, children}:ToolProps) => {
         if (isMouseDown) {
           const { ctx } = bufferPair;
           ctx.lineTo(e.clientX, e.clientY);
-          ctx.clearRect(0, 0, width, height);
           ctx.stroke();
+          layerPair.ctx.drawImage(bufferPair.canvas, 0, 0);
+          ctx.clearRect(0, 0, width, height);
         }
       }, [isMouseDown]),
       onMouseUp = useCallback(() => {
-        layerPair.ctx.globalCompositeOperation = 'destination-out';
         layerPair.ctx.drawImage(bufferPair.canvas, 0, 0);
         bufferPair.ctx.clearRect(0, 0, width, height);
         setMouseDown(false);
